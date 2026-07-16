@@ -1,0 +1,4 @@
+interface:
+  display_name: "Subagent Supervision"
+  short_description: "Instruct subagents and critically evaluate their reports."
+  default_prompt: "Use $subagent-supervision to delegate this work clearly and evaluate the resulting reports."

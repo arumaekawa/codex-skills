@@ -1,0 +1,4 @@
+interface:
+  display_name: "Code Simplify"
+  short_description: "Remove over-engineering from the current change."
+  default_prompt: "Use $code-simplify to simplify the current diff while preserving behavior exactly."

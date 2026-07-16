@@ -1,0 +1,4 @@
+interface:
+  display_name: "Write Project Wiki"
+  short_description: "Capture durable project-specific knowledge"
+  default_prompt: "Use $write-project-wiki to document durable project knowledge from this task."

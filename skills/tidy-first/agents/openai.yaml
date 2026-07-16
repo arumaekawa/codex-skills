@@ -1,0 +1,4 @@
+interface:
+  display_name: "Tidy First"
+  short_description: "Apply focused structural tidies before behavior changes."
+  default_prompt: "Use $tidy-first to decide whether this design needs a behavior-preserving tidy before implementation."

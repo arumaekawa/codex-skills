@@ -1,0 +1,4 @@
+interface:
+  display_name: "Implementation Workflow"
+  short_description: "Execute implementation tasks with subagents and a living note."
+  default_prompt: "Use $implementation-workflow to implement this change with subagents and a living Implementation Note."

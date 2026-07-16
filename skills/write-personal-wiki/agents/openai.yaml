@@ -1,0 +1,4 @@
+interface:
+  display_name: "Write Personal Wiki"
+  short_description: "Capture reusable cross-project knowledge"
+  default_prompt: "Use $write-personal-wiki to evaluate and document reusable knowledge from this task."

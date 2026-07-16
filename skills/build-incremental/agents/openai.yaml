@@ -1,0 +1,4 @@
+interface:
+  display_name: "Build Incremental"
+  short_description: "Implement in practical behavior slices."
+  default_prompt: "Use $build-incremental to implement this change in practical, verifiable behavior slices."

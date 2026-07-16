@@ -1,0 +1,4 @@
+interface:
+  display_name: "Task Brief"
+  short_description: "Clarify substantial work before planning or implementation."
+  default_prompt: "Use $task-brief to create a concise Task Brief for this work before planning or implementation."

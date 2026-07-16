@@ -1,0 +1,4 @@
+interface:
+  display_name: "Design First"
+  short_description: "Design code changes before implementation."
+  default_prompt: "Use $design-first to inspect the existing implementation and produce a concrete design before changing code."

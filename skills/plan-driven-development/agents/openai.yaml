@@ -1,0 +1,4 @@
+interface:
+  display_name: "Plan-Driven Development"
+  short_description: "Execute complex work through a living development plan"
+  default_prompt: "Use $plan-driven-development to plan and execute this complex work through a living ExecPlan."

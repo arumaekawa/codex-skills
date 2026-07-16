@@ -1,0 +1,29 @@
+{
+  "name": "codex-skills",
+  "version": "0.1.0",
+  "description": "Personal development workflows for Codex.",
+  "author": {
+    "name": "arumaekawa",
+    "url": "https://github.com/arumaekawa"
+  },
+  "homepage": "https://github.com/arumaekawa/codex-skills",
+  "repository": "https://github.com/arumaekawa/codex-skills",
+  "license": "MIT",
+  "keywords": [
+    "codex",
+    "skills",
+    "development-workflow"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Codex Skills",
+    "shortDescription": "Structured workflows for planning and implementing code changes.",
+    "longDescription": "A focused set of Codex skills for task definition, phased development, implementation, review, and durable documentation.",
+    "developerName": "arumaekawa",
+    "category": "Productivity",
+    "capabilities": [],
+    "defaultPrompt": [
+      "Plan and implement this change using the appropriate workflow."
+    ]
+  }
+}
