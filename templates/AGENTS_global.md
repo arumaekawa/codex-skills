@@ -21,7 +21,7 @@ Use `.agent-work/` for all agent work, including ExecPlans, task notes, and temp
 ## Development Workflows
 
 - Use `plan-driven-development` skill for complex, long-running development work that requires multiple coordinated tasks, dependent phases, or continuation across sessions. Use it to create and maintain the overall ExecPlan.
-- Use `implementation-workflow` skill for every bounded code implementation task, including each code-change task within an ExecPlan, except for an explicitly specified, self-evident minimal edit.
+- Use `implementation-workflow` for each cohesive, non-trivial code implementation task, including those within an ExecPlan; apply explicitly specified, self-evident minimal edits directly.
 
 ## Subagent Policy
 

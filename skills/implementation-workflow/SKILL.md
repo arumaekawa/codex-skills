@@ -1,23 +1,22 @@
 ---
 name: implementation-workflow
-description: Execute implementation tasks through a collaborative workflow with subagents, using a living Implementation Note as the shared source of truth. Use for every single bounded code implementation task except for an explicitly specified, self-evident minimal edit.
+description: Execute non-trivial code implementation tasks through a collaborative workflow with subagents, using a living Implementation Note as the shared source of truth. Use when a change involves design decisions, meaningful regression risk, multiple interacting parts, or work that benefits from delegated implementation and independent review.
 ---
 
 # Implementation Workflow
 
-Work with subagents on one bounded implementation unit at a time, using a living Implementation Note as the shared source of truth. Take each unit through task definition, design, implementation, verification, independent review, and documentation.
+Work with subagents on one cohesive implementation unit at a time, using a living Implementation Note as the shared source of truth. Take each unit through task definition, design, implementation, verification, independent review, and documentation.
 
 ## When to Use
 
-Use this workflow for every implementation unit except a concrete, explicitly specified, self-evident minimal edit that requires no design decision.
+Use this workflow for a cohesive code implementation task when it involves one or more of:
 
-For complex work, first decompose it into coherent subtasks, then apply this workflow independently to each subtask. When an ExecPlan exists, apply this workflow within each relevant code implementation task rather than replacing the ExecPlan.
+- non-obvious design decisions
+- multiple interacting components or behaviors
+- meaningful regression or integration risk
+- enough work that delegated implementation and independent review improve reliability
 
-Examples include:
-
-- implementing one cohesive feature
-- fixing a relatively straightforward bug
-- implementing one bounded code-change task from an ExecPlan
+When an ExecPlan exists, apply this workflow within each relevant code implementation task rather than replacing the ExecPlan.
 
 ## Working with Subagents
 
