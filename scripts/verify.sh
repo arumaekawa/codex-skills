@@ -83,7 +83,6 @@ for name in $expected_skills; do
   [ -f "$repo_root/skills/$name/agents/openai.yaml" ] || die "Missing skills/$name/agents/openai.yaml"
 done
 
-[ -f "$repo_root/agents/code-implementer.toml" ] || die "Missing code-implementer.toml"
 [ -f "$repo_root/agents/code-reviewer.toml" ] || die "Missing code-reviewer.toml"
 [ -f "$repo_root/templates/AGENTS_global.md" ] || die "Missing AGENTS_global.md"
 [ -f "$repo_root/templates/AGENTS_project.md" ] || die "Missing AGENTS_project.md"

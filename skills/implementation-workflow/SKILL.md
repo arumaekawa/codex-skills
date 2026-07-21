@@ -1,11 +1,11 @@
 ---
 name: implementation-workflow
-description: Execute non-trivial code implementation tasks through a collaborative workflow with subagents, using a living Implementation Note as the shared source of truth. Use when a change involves design decisions, meaningful regression risk, multiple interacting parts, or work that benefits from delegated implementation and independent review.
+description: Execute non-trivial code implementation tasks from task definition through design, implementation, verification, and independent review, using a living Implementation Note to track decisions and results. Use when a cohesive code change involves non-obvious design decisions, multiple interacting components or behaviors, meaningful regression or integration risk, or enough work that a structured workflow and independent review improve reliability.
 ---
 
 # Implementation Workflow
 
-Work with subagents on one cohesive implementation unit at a time, using a living Implementation Note as the shared source of truth. Take each unit through task definition, design, implementation, verification, independent review, and documentation.
+Carry one cohesive implementation unit from task definition through design, implementation, verification, independent review, and documentation. Perform the implementation directly to retain end-to-end context, and use a living Implementation Note to track the work.
 
 ## When to Use
 
@@ -14,40 +14,23 @@ Use this workflow for a cohesive code implementation task when it involves one o
 - non-obvious design decisions
 - multiple interacting components or behaviors
 - meaningful regression or integration risk
-- enough work that delegated implementation and independent review improve reliability
+- enough work that a structured workflow and independent review improve reliability
 
 When an ExecPlan exists, apply this workflow within each relevant code implementation task rather than replacing the ExecPlan.
 
-## Working with Subagents
-
-Delegate hands-on implementation and review work to subagents. Main agent supervises and coordinates the task, evaluates results, and decides the next action and whether the task is complete. This workflow does not depend on a separate orchestration skill.
-
-**Always use subagents unless the user explicitly prohibits their use.**
-
-### Agent Roles
-
-- Main agent: Define the task, coordinate assignments, inspect results, evaluate findings, and accept completion.
-- `code-implementer`: Perform the design, implementation, simplification, and verification while maintaining the implementation note.
-- `code-reviewer`: Independently review the change, record findings, verify their resolutions, and report when no unresolved findings remain.
-
-### Parallelism Policy
-
-- Prefer the same `code-implementer` throughout a coherent implementation task.
-- Parallelize review only across non-overlapping scopes, with one lead `code-reviewer` responsible for consolidating findings and reporting the final review status.
-
 ## Workflow
 
-Use the Implementation Note defined below as the shared source of truth throughout this workflow.
+Maintain the Implementation Note defined below as a concise living record throughout this workflow.
 
 Apply each "Update the Implementation Note" instruction when the step changes state. Do not defer updates until the end.
 
 ### 1. Initialize the Implementation Task
 
-Main agent performs substeps 1.1 and 1.2 sequentially. Complete step 1 only after both substeps are complete.
+Complete substeps 1.1 and 1.2 sequentially. Complete step 1 only after both substeps are complete.
 
 #### 1.1 Define the Task
 
-Define the task goal, in-scope behavior, explicit non-goals, and known constraints before creating the implementation note or delegating implementation work.
+Define the task goal, in-scope behavior, explicit non-goals, and known constraints before creating the Implementation Note or beginning implementation.
 
 #### 1.2 Create and Initialize the Implementation Note
 
@@ -59,7 +42,7 @@ Update the Implementation Note: Task Definition and Progress.
 
 ### 2. Implement the Change
 
-The `code-implementer` performs substeps 2.1 through 2.6 sequentially. Complete step 2 only after every substep is complete.
+Perform substeps 2.1 through 2.6 directly and sequentially. Do not delegate design or implementation work. Complete step 2 only after every substep is complete.
 
 #### 2.1 Design the Implementation
 
@@ -101,22 +84,24 @@ Update the Implementation Note: Progress, Design, and Implementation Record > De
 
 ### 3. Review the Implementation
 
-Have an independent `code-reviewer` review the implementation for correctness, regressions, design alignment, unnecessary complexity, missing verification, and undocumented behavior changes.
+Delegate an independent review to one `code-reviewer`. Provide the reviewer with the Implementation Note, the relevant changes, and the available verification results.
 
 Use the following review cycle:
 
-1. `code-reviewer` reviews the implementation and records findings.
-2. Main agent evaluates the findings and decides the required action.
-3. `code-implementer` addresses accepted findings.
-4. `code-reviewer` verifies the resolutions and re-reviews the resulting implementation for remaining or newly introduced issues.
+1. `code-reviewer` reviews the implementation and reports findings.
+2. Evaluate the findings and decide the required action.
+3. Address accepted findings, update the Implementation Note, and rerun relevant verification.
+4. Ask the same `code-reviewer` to verify the resolutions and review the resulting implementation for remaining or newly introduced issues.
 
-Repeat until the `code-reviewer` reports no unresolved findings. Main agent then decides whether to accept the implementation or reopen an earlier step. Keep step 3 incomplete until Main agent accepts the implementation.
+Repeat until the `code-reviewer` reports no unresolved findings. Then decide whether to accept the implementation or reopen an earlier step. Keep step 3 incomplete until the implementation is accepted.
+
+If the user explicitly prohibits subagent use, perform the review directly and record that it was not independent.
 
 Update the Implementation Note: Progress, Review, and Implementation Record > Changes and Verification Results.
 
 ### 4. Update Documentation if Needed
 
-Main agent determines whether the completed change requires documentation updates.
+Determine whether the completed change requires documentation updates.
 
 Update relevant user, developer, API, architecture, workflow, or wiki documentation when needed.
 
@@ -124,7 +109,7 @@ Update the Implementation Note: Progress and Documentation.
 
 ### 5. Confirm Completion
 
-Main agent confirms that:
+Confirm that:
 
 - steps 1 through 4 are complete and the Implementation Note reflects the final state
 - the implementation matches the final Task Definition and Design
@@ -137,9 +122,9 @@ Update the Implementation Note: Status and Progress.
 
 ## Implementation Note
 
-Maintain one living implementation note for each implementation task. Use it as the shared source of truth for design, implementation, verification, review, and documentation.
+Maintain one living Implementation Note for each implementation task. Use it to keep the task definition, design, progress, implementation record, verification, review, and documentation current.
 
-Read and update the note throughout the workflow. Record decisions, discoveries, deviations, and results when they become relevant. Keep it concise; do not store raw logs or a transcript of the work.
+Record decisions, discoveries, deviations, and results when they become relevant. Keep the note concise; do not store raw logs or a transcript of the work.
 
 Keep the Design section current. When a decision or discovery changes the design, update the Design section and record the reason under Implementation Record > Decisions and Discoveries.
 
@@ -152,8 +137,6 @@ Use this template:
 - Started: {YYYY-MM-DD}
 
 ## Task Definition
-
-Maintained by: Main agent
 
 ### Goal
 
@@ -175,23 +158,21 @@ Maintained by: Main agent
 
 ## Progress
 
-- [ ] 1. Main agent – Initialize the Implementation Task
+- [ ] 1. Initialize the Implementation Task
   - [ ] 1.1 Define the Task
   - [ ] 1.2 Create and Initialize the Implementation Note
-- [ ] 2. `code-implementer` – Implement the Change
+- [ ] 2. Implement the Change
   - [ ] 2.1 Design the Implementation
   - [ ] 2.2 Tidy the Existing Implementation if Needed
   - [ ] 2.3 Implement the Behavior
   - [ ] 2.4 Reassess the Implementation
   - [ ] 2.5 Simplify the Change
   - [ ] 2.6 Test and Verify
-- [ ] 3. `code-reviewer` – Review the Implementation
-- [ ] 4. Main agent – Update Documentation if Needed
-- [ ] 5. Main agent – Confirm Completion
+- [ ] 3. Review the Implementation
+- [ ] 4. Update Documentation if Needed
+- [ ] 5. Confirm Completion
 
 ## Design
-
-Maintained by: `code-implementer`
 
 ### Behavior
 
@@ -219,8 +200,6 @@ Maintained by: `code-implementer`
 
 ## Implementation Record
 
-Maintained by: `code-implementer`
-
 ### Decisions and Discoveries
 
 - {Decision, discovery, or design revision and its impact}
@@ -235,16 +214,12 @@ Maintained by: `code-implementer`
 
 ## Review
 
-Maintained by: Main agent
-
 - Finding: {Review finding}
   Resolution: {Change made, reason no change was needed, or accepted risk}
 - Review status: {Findings remain or no unresolved findings}
-- Main agent decision: {Accept the implementation or reopen an earlier step}
+- Decision: {Accept the implementation or reopen an earlier step}
 
 ## Documentation
-
-Maintained by: Main agent and `code-implementer`
 
 - {Updated documentation or reason no update was needed}
 ```
