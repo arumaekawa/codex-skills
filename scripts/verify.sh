@@ -66,6 +66,7 @@ implementation-workflow
 plan-driven-development
 subagent-supervision
 task-brief
+test-driven-debug
 tidy-first
 write-personal-wiki
 write-project-wiki'

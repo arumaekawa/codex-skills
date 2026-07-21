@@ -13,8 +13,9 @@ The skills form a layered development workflow:
 
 - `task-brief` defines the task with the user before execution.
 - `plan-driven-development` coordinates long-running work as phases and bounded tasks.
-- `implementation-workflow` carries one bounded code task from design through independent review
+- `implementation-workflow` carries one cohesive feature or behavior change from design through independent review
   - `design-first` → `tidy-first` → `build-incremental` → `code-simplify` → verify → review
+- `test-driven-debug` fixes unintended behavior through cause tracing and a focused Red-Green cycle recorded in a Debug Note.
 - `write-project-wiki` and `write-personal-wiki` preserve durable knowledge discovered along the way.
 
 ## Quick start
@@ -85,7 +86,8 @@ These skills plan and carry out development work alongside repository instructio
 |---|---|---|
 | [task-brief](skills/task-brief/SKILL.md) | Clarifies the Goal, Context, Constraints, and Done when, then obtains user confirmation before planning or implementation. | Before complex implementation, significant refactoring, behavior changes, multi-file changes, or ExecPlan creation. |
 | [plan-driven-development](skills/plan-driven-development/SKILL.md) | Manages and executes long-running work through a living ExecPlan organized into phases and bounded tasks. | When one Goal requires multiple dependent tasks or work spans phases or sessions. |
-| [implementation-workflow](skills/implementation-workflow/SKILL.md) | Executes one bounded code implementation unit from design through verification and independent review, using a living Implementation Note to track decisions and results. | For each cohesive, non-trivial code implementation task; explicitly specified, self-evident minimal edits are applied directly. |
+| [implementation-workflow](skills/implementation-workflow/SKILL.md) | Executes one cohesive feature or behavior change from design through verification and independent review, using a living Implementation Note to track decisions and results. | For non-trivial feature implementations and behavior changes. |
+| [test-driven-debug](skills/test-driven-debug/SKILL.md) | Traces bugs to their cause and uses a regression-test Red-Green cycle with focused preservation tests when needed, recorded in a living Debug Note. | For bug fixes and corrections to unintended behavior, including issues found during code review or testing. |
 | [subagent-supervision](skills/subagent-supervision/SKILL.md) | Guides bounded delegation and critical evaluation of subagent reports. | Whenever work is delegated to one or more subagents. |
 
 ### Code Design
@@ -115,10 +117,9 @@ Break down requested tasks and turn them into a workflow.
 
 ```text
 User request
-├─ Explicitly specified, self-evident minimal code edit → Execute directly
-│
 ├─ Single bounded task
-│  ├─ Code task → `implementation-workflow`
+│  ├─ Feature implementation or behavior change → `implementation-workflow`
+│  ├─ Bug fix or unintended behavior → `test-driven-debug`
 │  └─ Non-code task → Execute directly
 │
 └─ Complex / long-running task
@@ -126,11 +127,12 @@ User request
       └─ `plan-driven-development` → ExecPlan
          └─ Phase: A verifiable milestone
            └─ Task: Single bounded task
-              ├─ Code task → `implementation-workflow`
+              ├─ Feature implementation or behavior change → `implementation-workflow`
+              ├─ Bug fix or unintended behavior → `test-driven-debug`
               └─ Non-code task → Execute directly
 ```
 
-Each cohesive, non-trivial code task follows this workflow. The main agent performs the implementation directly and delegates independent review to [code-reviewer](agents/code-reviewer.toml).
+Each cohesive, non-trivial feature implementation or behavior change follows this workflow. The main agent performs the implementation directly and delegates independent review to [code-reviewer](agents/code-reviewer.toml).
 
 ```text
 `implementation-workflow`
@@ -141,6 +143,17 @@ Each cohesive, non-trivial code task follows this workflow. The main agent perfo
 ├─ Simplify → `code-simplify`
 ├─ Verify
 └─ Subagent review & resolution cycle
+```
+
+Bug fixes use a focused Red-Green workflow with one living Debug Note.
+
+```text
+`test-driven-debug`
+├─ Define issue → create Debug Note
+├─ Identify cause
+├─ Establish Red; add focused preservation tests if needed
+├─ Fix cause
+└─ Establish Green
 ```
 
 ## Usage

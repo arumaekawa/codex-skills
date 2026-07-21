@@ -1,22 +1,22 @@
 ---
 name: implementation-workflow
-description: Execute non-trivial code implementation tasks from task definition through design, implementation, verification, and independent review, using a living Implementation Note to track decisions and results. Use when a cohesive code change involves non-obvious design decisions, multiple interacting components or behaviors, meaningful regression or integration risk, or enough work that a structured workflow and independent review improve reliability.
+description: Implement cohesive, non-trivial features and behavior changes through design, implementation, verification, and independent review, using a living Implementation Note. Use when the work involves non-obvious design, multiple interacting components or behaviors, meaningful regression or integration risk, or benefits from a structured workflow and independent review.
 ---
 
 # Implementation Workflow
 
-Carry one cohesive implementation unit from task definition through design, implementation, verification, independent review, and documentation. Perform the implementation directly to retain end-to-end context, and use a living Implementation Note to track the work.
+Carry one cohesive feature or behavior change from task definition through design, implementation, verification, independent review, and documentation. Perform the implementation directly to retain end-to-end context, and use a living Implementation Note to track the work.
 
 ## When to Use
 
-Use this workflow for a cohesive code implementation task when it involves one or more of:
+Use this workflow for a cohesive feature implementation or behavior change when it involves one or more of:
 
 - non-obvious design decisions
 - multiple interacting components or behaviors
 - meaningful regression or integration risk
 - enough work that a structured workflow and independent review improve reliability
 
-When an ExecPlan exists, apply this workflow within each relevant code implementation task rather than replacing the ExecPlan.
+When an ExecPlan exists, apply this workflow within each relevant feature or behavior-change task rather than replacing the ExecPlan.
 
 ## Workflow
 
