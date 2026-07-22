@@ -252,6 +252,13 @@ Targets are removed only when links still point to this checkout or copies still
 match the installer's snapshot. Backups are never removed automatically. Remove
 the skills separately through the Codex plugin manager.
 
+## Release history
+
+- [v0.2.0](https://github.com/arumaekawa/codex-skills/releases/tag/v0.2.0) —
+  Added test-driven debugging and refined the planning and implementation workflows.
+- [v0.1.0](https://github.com/arumaekawa/codex-skills/tree/v0.1.0) —
+  Initial release.
+
 ## Development
 
 To test skill changes from a checkout already registered as the local
