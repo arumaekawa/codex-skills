@@ -4,7 +4,7 @@ Personal Codex [skills](skills/), [custom agents](agents/), and [AGENTS.md templ
 managed as one portable Git repository.
 
 It is designed for AI/ML development work and includes plan-driven workflows for
-long-running work, collaborative implementation with subagents, and guardrails
+long-running work, structured implementation with independent review, and guardrails
 against over-engineering.
 
 ## Overview
@@ -13,8 +13,9 @@ The skills form a layered development workflow:
 
 - `task-brief` defines the task with the user before execution.
 - `plan-driven-development` coordinates long-running work as phases and bounded tasks.
-- `implementation-workflow` carries one bounded code task with subagents
+- `implementation-workflow` carries one cohesive feature or behavior change from design through independent review
   - `design-first` → `tidy-first` → `build-incremental` → `code-simplify` → verify → review
+- `test-driven-debug` fixes unintended behavior through cause tracing and a focused Red-Green cycle recorded in a Debug Note.
 - `write-project-wiki` and `write-personal-wiki` preserve durable knowledge discovered along the way.
 
 ## Quick start
@@ -85,7 +86,8 @@ These skills plan and carry out development work alongside repository instructio
 |---|---|---|
 | [task-brief](skills/task-brief/SKILL.md) | Clarifies the Goal, Context, Constraints, and Done when, then obtains user confirmation before planning or implementation. | Before complex implementation, significant refactoring, behavior changes, multi-file changes, or ExecPlan creation. |
 | [plan-driven-development](skills/plan-driven-development/SKILL.md) | Manages and executes long-running work through a living ExecPlan organized into phases and bounded tasks. | When one Goal requires multiple dependent tasks or work spans phases or sessions. |
-| [implementation-workflow](skills/implementation-workflow/SKILL.md) | Executes one bounded code implementation unit from design through independent review in collaboration with subagents, using a living Implementation Note as the shared source of truth. | For every bounded code implementation task except an explicitly specified, self-evident minimal edit. |
+| [implementation-workflow](skills/implementation-workflow/SKILL.md) | Executes one cohesive feature or behavior change from design through verification and independent review, using a living Implementation Note to track decisions and results. | For non-trivial feature implementations and behavior changes. |
+| [test-driven-debug](skills/test-driven-debug/SKILL.md) | Traces bugs to their cause and uses a regression-test Red-Green cycle with focused preservation tests when needed, recorded in a living Debug Note. | For bug fixes and corrections to unintended behavior, including issues found during code review or testing. |
 | [subagent-supervision](skills/subagent-supervision/SKILL.md) | Guides bounded delegation and critical evaluation of subagent reports. | Whenever work is delegated to one or more subagents. |
 
 ### Code Design
@@ -115,10 +117,9 @@ Break down requested tasks and turn them into a workflow.
 
 ```text
 User request
-├─ Explicitly specified, self-evident minimal code edit → Execute directly
-│
 ├─ Single bounded task
-│  ├─ Code task → `implementation-workflow`
+│  ├─ Feature implementation or behavior change → `implementation-workflow`
+│  ├─ Bug fix or unintended behavior → `test-driven-debug`
 │  └─ Non-code task → Execute directly
 │
 └─ Complex / long-running task
@@ -126,25 +127,33 @@ User request
       └─ `plan-driven-development` → ExecPlan
          └─ Phase: A verifiable milestone
            └─ Task: Single bounded task
-              ├─ Code task → `implementation-workflow`
+              ├─ Feature implementation or behavior change → `implementation-workflow`
+              ├─ Bug fix or unintended behavior → `test-driven-debug`
               └─ Non-code task → Execute directly
 ```
 
-Each bounded code task follows this collaborative workflow with subagents.
-The main agent delegates tasks to [code-implementer](agents/code-implementer.toml) and [code-reviewer](agents/code-reviewer.toml) while supervising their work.
+Each cohesive, non-trivial feature implementation or behavior change follows this workflow. The main agent performs the implementation directly and delegates independent review to [code-reviewer](agents/code-reviewer.toml).
 
 ```text
 `implementation-workflow`
-├─ Main agent
-│  └─ Define task → create Implementation Note
-├─ `code-implementer`
-│  ├─ Design → `design-first`
-│  ├─ Tidy → `tidy-first`
-│  ├─ Implement → `build-incremental`
-│  ├─ Simplify → `code-simplify`
-│  └─ Verify
-└─ `code-reviewer`
-   └─ Review & resolution cycle
+├─ Define task → create Implementation Note
+├─ Design → `design-first`
+├─ Tidy → `tidy-first`
+├─ Implement → `build-incremental`
+├─ Simplify → `code-simplify`
+├─ Verify
+└─ Subagent review & resolution cycle
+```
+
+Bug fixes use a focused Red-Green workflow with one living Debug Note.
+
+```text
+`test-driven-debug`
+├─ Define issue → create Debug Note
+├─ Identify cause
+├─ Establish Red; add focused preservation tests if needed
+├─ Fix cause
+└─ Establish Green
 ```
 
 ## Usage
@@ -242,6 +251,29 @@ component. With `agents` or `templates`, it operates only on that component.
 Targets are removed only when links still point to this checkout or copies still
 match the installer's snapshot. Backups are never removed automatically. Remove
 the skills separately through the Codex plugin manager.
+
+## Release history
+
+- [v0.2.0](https://github.com/arumaekawa/codex-skills/releases/tag/v0.2.0) —
+  Added test-driven debugging and refined the planning and implementation workflows.
+- [v0.1.0](https://github.com/arumaekawa/codex-skills/tree/v0.1.0) —
+  Initial release.
+
+## Development
+
+To test skill changes from a checkout already registered as the local
+`codex-skills` marketplace:
+
+```sh
+python3 ~/.codex/skills/.system/plugin-creator/scripts/update_plugin_cachebuster.py .
+codex plugin add codex-skills@codex-skills
+```
+
+The helper updates `.codex-plugin/plugin.json`; keep the cachebuster while
+testing and restore it before committing unless the change is intentional.
+Linked agents and templates already reference the checkout, so use
+`./scripts/update.sh --no-pull` only to validate them. Start a new Codex task
+after either kind of change.
 
 ## Feedback
 

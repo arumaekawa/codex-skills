@@ -1,0 +1,4 @@
+interface:
+  display_name: "Test Driven Debug"
+  short_description: "Debug with Red-Green evidence and a living note."
+  default_prompt: "Use $test-driven-debug to trace this bug, capture Red-Green evidence, and fix it with a living Debug Note."

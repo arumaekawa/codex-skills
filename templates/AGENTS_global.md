@@ -20,13 +20,19 @@ Use `.agent-work/` for all agent work, including ExecPlans, task notes, and temp
 
 ## Development Workflows
 
-- Use `plan-driven-development` skill for complex, long-running development work that requires multiple coordinated tasks, dependent phases, or continuation across sessions. Use it to create and maintain the overall ExecPlan.
-- Use `implementation-workflow` skill for every bounded code implementation task, including each code-change task within an ExecPlan, except for an explicitly specified, self-evident minimal edit.
+- Use `plan-driven-development` for complex, long-running development work that requires multiple coordinated tasks, dependent phases, or continuation across sessions. Use it to create and maintain the overall ExecPlan.
+- Use `implementation-workflow` for each cohesive, non-trivial feature implementation or behavior change, including those within an ExecPlan.
+- Use `test-driven-debug` for bug fixes and other corrections to unintended behavior, including issues found during code review or testing.
 
 ## Subagent Policy
 
-- Unless the user explicitly prohibits subagent use, proactively use subagents whenever delegation would help. Assign self-contained tasks to subagents to keep the main agent’s context focused on coordination, evaluation, and decisions.
-- Run multiple subagents in parallel only for independent, non-overlapping tasks with no conflicting changes or ordering dependencies.
+Unless the user explicitly prohibits subagent use, use subagents as needed for clearly bounded subtasks that can produce self-contained results, such as:
+
+- investigating relevant code or documentation
+- checking API compatibility
+- reviewing a clearly defined scope
+
+Run multiple subagents in parallel only for independent, non-overlapping tasks with no conflicts or ordering dependencies.
 
 ## Coding Guidelines
 
