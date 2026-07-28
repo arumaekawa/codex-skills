@@ -26,13 +26,14 @@ Use `.agent-work/` for all agent work, including ExecPlans, task notes, and temp
 
 ## Subagent Policy
 
-Unless the user explicitly prohibits subagent use, use subagents as needed for clearly bounded subtasks that can produce self-contained results, such as:
+Unless the user explicitly prohibits subagent use, use subagents as needed for clearly bounded work that can produce self-contained results. Good use cases include:
 
-- investigating relevant code or documentation
-- checking API compatibility
-- reviewing a clearly defined scope
+- exploring broad areas of code or documentation by assigning specific, independent questions
+- researching APIs, dependencies, or compatibility requirements
+- analyzing tests, logs, or other evidence without modifying the implementation
+- independently reviewing a clearly defined scope
 
-Run multiple subagents in parallel only for independent, non-overlapping tasks with no conflicts or ordering dependencies.
+Run multiple subagents in parallel only for independent, non-overlapping tasks with no conflicts or ordering dependencies. The main agent remains responsible for synthesizing the results and making final decisions.
 
 ## Coding Guidelines
 
