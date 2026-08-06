@@ -1,6 +1,6 @@
 ---
 name: task-brief
-description: Create a concise Task Brief before complex implementation work, significant refactors, behavior-changing changes, multi-file edits, or ExecPlan creation. Use when Codex must clarify Goal, Context, Constraints, and Done when; infer safe details from repository evidence; ask only high-impact unknowns; and get user confirmation before planning or implementation.
+description: Clarify substantial work with a concise Task Brief when high-impact details cannot be safely inferred before planning or implementation. Use to resolve ambiguity in Goal, Context, Constraints, or Done when; ask only high-impact unknowns; and get user confirmation before continuing.
 ---
 
 # Task Brief

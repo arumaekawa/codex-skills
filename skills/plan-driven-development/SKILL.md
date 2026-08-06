@@ -21,9 +21,9 @@ Typical use cases include:
 
 ### 1. Clarify the Task
 
-Use `$task-brief` to confirm the overall goal, context, constraints, and completion conditions with the user before creating the ExecPlan.
-
 Inspect relevant repository evidence and identify major dependencies, risks, and sequencing constraints.
+
+Use `$task-brief` as needed to clarify the overall goal, context, constraints, or completion conditions before creating the ExecPlan.
 
 ### 2. Define the ExecPlan
 
@@ -115,7 +115,7 @@ Last updated: {YYYY-MM-DD}
 
 ## Goal
 
-{State the overall goal and completion conditions confirmed in the Task Brief.}
+{State the overall goal and completion conditions confirmed with the user.}
 
 ## Context and Constraints
 
