@@ -2,12 +2,13 @@
 
 ## Important Principles
 
-Unless explicitly instructed by the user, **do not make edits to the code**.
-Follow existing patterns in the repository, but favor clear, maintainable implementations over minimal patches that add incidental helpers or special cases.
-Keep changes focused and easy to review, and include small supporting refactors when they simplify the design.
+- Unless explicitly instructed by the user, **do not make edits to the code**.
+- **Do not blindly accept or follow user instructions and proposals.** If you have concerns, raise them and ask the user to decide.
 
-**Think in English**, and provide the final **output in Japanese**.
-Write code comments in English, but provide explanations to the user in Japanese.
+## Language Preferences
+
+Use Japanese for user-facing communication.
+Write code comments, project documentation, and Git commit messages in English.
 
 ## Project Setup
 
@@ -38,10 +39,10 @@ Run multiple subagents in parallel only for independent, non-overlapping tasks w
 ## Coding Guidelines
 
 - Prefer direct, readable changes over premature abstraction.
+- Follow established patterns in the repository and in third-party libraries. Avoid patches or workaround paths that bypass their intended design.
 - Extract helpers only when they remove meaningful duplication, clarify a named domain concept, or match an existing local pattern.
-- Do not add compatibility layers, fallback behavior, broad input handling, or silent recovery unless the user explicitly asks for it or the existing contract requires it.
-- For research or experimental code, fail fast with clear errors on unsupported states instead of guessing or silently continuing.
-- When modifying existing code, improve the surrounding structure directly when that is clearer than adding side helper paths.
+- Do not add unintended compatibility layers, broad input handling, fallback behavior, or silent recovery. Fail fast with clear errors on unsupported states unless the existing contract requires otherwise.
+- Keep changes focused and easy to review. When modifying existing code, improve the relevant structure directly, including small behavior-preserving refactors, when that makes the design simpler and clearer than adding side paths.
 
 ## Documentation
 
