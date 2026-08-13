@@ -14,13 +14,8 @@ Fill this template by reading repo sources first: README.md, CONTRIBUTING.md, do
 
 ## Rules
 
-- Keep changes focused, maintainable, and aligned with the repository's design.
-- Prefer straightforward implementations over narrow patches that add incidental helpers or special cases.
-- Follow existing patterns before adding new structure; document intentional departures.
 - Do not modify generated files, large artifacts, data, logs, or unrelated files unless explicitly required.
 - Never commit secrets, credentials, API keys, tokens, or private data.
-
-{{REPO_SPECIFIC_RULES: Add only repository-specific boundaries, artifact rules, or security constraints. Remove this placeholder if none are documented.}}
 
 ## Commands
 
