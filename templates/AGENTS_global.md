@@ -36,6 +36,15 @@ Unless the user explicitly prohibits subagent use, use subagents as needed for c
 
 Run multiple subagents in parallel only for independent, non-overlapping tasks with no conflicts or ordering dependencies. The main agent remains responsible for synthesizing the results and making final decisions.
 
+### Custom Subagent Roles
+
+- `advisor`: Advise on decisions involving multiple interacting concerns,
+  such as work planning and overall implementation design, or when progress
+  stalls. Share the goal, constraints, and relevant history so it can identify
+  blind spots and challenge the approach. The Main agent owns final decisions.
+- `code-reviewer`: Independently review changes for defects and verification gaps.
+- `fast-worker`: Handle straightforward, bounded tasks.
+
 ## Coding Guidelines
 
 - Prefer direct, readable changes over premature abstraction.

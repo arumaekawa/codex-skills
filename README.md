@@ -45,6 +45,19 @@ cd codex-skills
 ./scripts/install.sh agents --link --backup
 ```
 
+Included custom agents:
+
+- [advisor](agents/advisor.toml): Assesses the overall approach, identifies blind
+  spots, and advises on difficult decisions and course corrections. Uses
+  `gpt-6-astra` with `xhigh` reasoning and a read-only sandbox.
+- [code-reviewer](agents/code-reviewer.toml): Independently reviews changes for
+  defects and verification gaps.
+- [fast-worker](agents/fast-worker.toml): Handles straightforward, bounded tasks
+  using `gpt-5.6-luna` with `medium` reasoning.
+
+The [global AGENTS.md template](templates/AGENTS_global.md) includes guidance on
+when to consult the advisor. Install the templates below to apply that guidance.
+
 ### 3. Install AGENTS.md templates
 
 From the same checkout, deploy the global and project templates:
