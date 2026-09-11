@@ -267,6 +267,9 @@ the skills separately through the Codex plugin manager.
 
 ## Release history
 
+- [v0.4.0](https://github.com/arumaekawa/codex-skills/releases/tag/v0.4.0) —
+  Added advisor and fast-worker agents, documented role selection, set reviewer
+  reasoning to medium, and simplified project agent rules.
 - [v0.3.0](https://github.com/arumaekawa/codex-skills/releases/tag/v0.3.0) —
   Refined global agent guidance and made Task Brief clarification conditional.
 - [v0.2.0](https://github.com/arumaekawa/codex-skills/releases/tag/v0.2.0) —
