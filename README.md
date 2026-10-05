@@ -123,6 +123,14 @@ These skills plan and carry out development work alongside repository instructio
 |---|---|---|
 | [write-project-wiki](skills/write-project-wiki/SKILL.md) | Records durable project-specific knowledge discovered during work in the project wiki. | When specifications, architecture, APIs, data formats, project workflows, or project gotchas should be preserved. |
 | [write-personal-wiki](skills/write-personal-wiki/SKILL.md) | Evaluates discovered knowledge and records findings that are reusable across projects in the personal wiki. | When general technical knowledge, workflows, gotchas, external research, or non-sensitive internal R&D knowledge may be reusable. |
+| [setup-wiki-backed-project-skills](skills/setup-wiki-backed-project-skills/SKILL.md) | Installs a wiki workflow and repository-local skill for creating wiki-backed project skills. | When setting up this pattern in a repository that uses or prescribes `docs/wiki`. |
+
+### Repositories and worktrees
+
+| Skill | Description | Use when |
+|---|---|---|
+| [create-or-clone-repository](skills/create-or-clone-repository/SKILL.md) | Creates or clones repositories with ghq using its configured layout. | Before creating or cloning a repository, including as a step within another task. |
+| [manage-git-worktrees](skills/manage-git-worktrees/SKILL.md) | Creates, reuses, inspects, and removes Git worktrees with gwq. | When a task needs a separate checkout, parallel branch work, or worktree management. |
 
 ### Typical workflow
 

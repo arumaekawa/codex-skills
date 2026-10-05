@@ -1,0 +1,5 @@
+interface:
+  display_name: "Create or Clone Repository"
+  short_description: "Create and clone repositories with ghq."
+policy:
+  allow_implicit_invocation: true

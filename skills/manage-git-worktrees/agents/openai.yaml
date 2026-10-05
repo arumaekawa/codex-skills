@@ -1,0 +1,5 @@
+interface:
+  display_name: "Manage Git Worktrees"
+  short_description: "Create, reuse, and remove worktrees with gwq."
+policy:
+  allow_implicit_invocation: true

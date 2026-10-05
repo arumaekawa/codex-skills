@@ -61,9 +61,12 @@ fi
 
 expected_skills='build-incremental
 code-simplify
+create-or-clone-repository
 design-first
 implementation-workflow
+manage-git-worktrees
 plan-driven-development
+setup-wiki-backed-project-skills
 subagent-supervision
 task-brief
 test-driven-debug
